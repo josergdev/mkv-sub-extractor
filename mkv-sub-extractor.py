@@ -16,13 +16,16 @@ def extract_srt_from_mkv(mkv_info):
 
 	tracks = mkv_info["tracks"]
 	sub_tracks = list(filter(lambda track: track["codec"] == "SubRip/SRT", tracks))
-	parsed_sub_tracks = list(map(lambda sub_track: "{}:{}.{}.{}{}_{}.srt".format(sub_track["id"],
-																				   name,
-																			   	   sub_track["properties"]["language"],
-																				   "forced." if sub_track["properties"]["forced_track"] else "",
-																			       sub_track["id"],
-																				   sub_track["properties"]["track_name"]), sub_tracks))
-
+	parsed_sub_tracks = list(map(lambda sub_track:
+									"{}:{}.{}.{}{}_{}.srt"
+										.format(
+											sub_track["id"],
+											name,
+											sub_track["properties"]["language"],
+											"forced." if sub_track["properties"]["forced_track"] else "",
+											sub_track["id"],
+											sub_track["properties"]["track_name"]), sub_tracks)
+										)
 	subprocess.run(["mkvextract", mkv_file, "tracks"] + parsed_sub_tracks)
 
 #	print("Extracting", "{}:{}.{}.srt".format(track_id, name, lang))
