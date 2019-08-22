@@ -7,6 +7,6 @@ python3 mkv-sub-extractor.py file.mkv
 ```
 
 ## Notes
-It is a beta version of the tool, only implemented SubRip/SRT extractions.
+It is a premature version of the tool, only implemented SubRip/SRT extractions.  
 Need mkvmerge and mkvextract from [MKVToolNix](https://mkvtoolnix.download "MKVToolNix") to be installed.
 
