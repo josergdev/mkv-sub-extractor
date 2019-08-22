@@ -24,8 +24,10 @@ def extract_srt_from_mkv(mkv_info):
 											sub_track["properties"]["language"],
 											"forced." if sub_track["properties"]["forced_track"] else "",
 											sub_track["id"],
-											sub_track["properties"]["track_name"]), sub_tracks)
-										)
+											sub_track["properties"]["track_name"]
+										),
+									sub_tracks)
+								)
 	subprocess.run(["mkvextract", mkv_file, "tracks"] + parsed_sub_tracks)
 
 #	print("Extracting", "{}:{}.{}.srt".format(track_id, name, lang))
